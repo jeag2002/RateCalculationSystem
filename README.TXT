@@ -8,7 +8,7 @@ Create jar executing maven command:
 
 mvn install 
 
-(after all system generate a jar named PalindromeEngine-0.0.1-SNAPSHOT.jar)
+(after all system generate a jar named RateCalculationSystem-0.0.1-SNAPSHOT.jar)
 
 Example of Execution (Windows 10 64Bits Version):
 
