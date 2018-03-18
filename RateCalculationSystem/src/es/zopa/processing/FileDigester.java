@@ -68,6 +68,19 @@ public class FileDigester {
 			throw eDException;
 		}catch(Exception e){
 			throw e;
+		}finally{
+			try{
+				if (br != null){
+					br.close();		
+				}
+			}catch(Exception e){}
+			
+			try{
+				if (in != null){
+					in.close();
+				}
+			}catch(Exception e){}
+			
 		}
 	}
 	
