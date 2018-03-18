@@ -33,7 +33,7 @@
 		<configuration>
   		<archive>
     		<manifest>
-			<mainClass>es.schibsted.Main</mainClass>
+			<mainClass>es.zopa.Main</mainClass>
     		</manifest>
   		</archive>
 		</configuration>
