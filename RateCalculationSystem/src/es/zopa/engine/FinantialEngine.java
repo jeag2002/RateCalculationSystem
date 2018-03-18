@@ -118,7 +118,7 @@ public class FinantialEngine {
 			}
 		}
 		
-		weight = weight.divide(initial_amount_B,4,RoundingMode.HALF_UP);
+		weight = weight.divide(initial_amount_B,10,RoundingMode.HALF_UP);
 		return weight;
 	}
 	

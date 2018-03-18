@@ -87,7 +87,7 @@ public class FinantialEngineTest {
 		assertEquals("reqAmount",1000L,reqAmount);
 		assertEquals("rate",7.0,rate,DELTA);
 		assertEquals("monthRepayment",30.78,monthRepayment,DELTA);
-		assertEquals("totRepayment",1108.04,totRepayment,DELTA);
+		assertEquals("totRepayment",1108.10,totRepayment,DELTA);
 	}
 	
 	
