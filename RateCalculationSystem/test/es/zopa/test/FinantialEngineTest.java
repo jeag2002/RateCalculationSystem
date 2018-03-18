@@ -94,23 +94,17 @@ public class FinantialEngineTest {
 	@Test
 	public void FinantialEngineTest_2() throws Exception{
 		
+		
 		ArrayList<AmountBean> aBList = new ArrayList<AmountBean>();
 		aBList.add(new AmountBean((new BigDecimal(0.075)).setScale(3, RoundingMode.HALF_UP),new BigDecimal(640)));		
 		
-		List<AmountBean> arrayAB = aBList.stream().sorted((e1,e2)->e1.getRate().compareTo(e2.getRate())).collect(Collectors.toList());
-		long initial_amount = 1000L;
-		ResponseBean rB = FinantialEngine.processAmount(initial_amount, arrayAB);
-		
-		long reqAmount = rB.getReqAmount().longValue();
-		double rate = rB.getRate().setScale(1, RoundingMode.HALF_UP).doubleValue();
-		double monthRepayment = rB.getMonthRepayment().setScale(2, RoundingMode.HALF_UP).doubleValue();
-		double totRepayment = rB.getTotRepayment().setScale(2, RoundingMode.HALF_UP).doubleValue();
-		
-		
-		assertEquals("reqAmount",1000L,reqAmount);
-		assertEquals("rate",7.5,rate,DELTA);
-		assertEquals("monthRepayment",30.99,monthRepayment,DELTA);
-		assertEquals("totRepayment",1115.76,totRepayment,DELTA);
+		try{
+			List<AmountBean> arrayAB = aBList.stream().sorted((e1,e2)->e1.getRate().compareTo(e2.getRate())).collect(Collectors.toList());
+			long initial_amount = 1000L;
+			ResponseBean rB = FinantialEngine.processAmount(initial_amount, arrayAB);
+		}catch(Exception e){
+			assertEquals("Exception",e.getMessage(),"not enough data for the loan monthly amount evaluation");
+		}
 	}
 	
 	

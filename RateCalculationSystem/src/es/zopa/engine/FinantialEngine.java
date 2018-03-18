@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import es.zopa.exceptions.EmptyDataException;
+import es.zopa.exceptions.NotEnoughSumException;
 import es.zopa.model.request.AmountBean;
 import es.zopa.model.response.ResponseBean;
 import es.zopa.utils.Constants;
@@ -21,7 +22,7 @@ public class FinantialEngine {
 	 * @param data
 	 * @return
 	 */
-	public static ResponseBean processAmount(Long initial_amount, List<AmountBean>data) throws ArithmeticException, EmptyDataException{
+	public static ResponseBean processAmount(Long initial_amount, List<AmountBean>data) throws ArithmeticException, EmptyDataException, NotEnoughSumException{
 		
 	    List<AmountBean> aBListClone = new ArrayList<AmountBean>();
 	    BigDecimal initial_amount_B = new BigDecimal(initial_amount);
@@ -129,7 +130,7 @@ public class FinantialEngine {
 	 * @return
 	 */
 	
-	public static List<AmountBean> cloneAmountList(List<AmountBean> data, Long initial_amount){
+	public static List<AmountBean> cloneAmountList(List<AmountBean> data, Long initial_amount) throws NotEnoughSumException{
 		Long sum = 0L;
 		List<AmountBean> aBListClone = new ArrayList<AmountBean>();
 		
@@ -139,6 +140,10 @@ public class FinantialEngine {
 			if (sum >= initial_amount){
 				break;
 			}
+		}
+		
+		if (sum < initial_amount){
+			throw new NotEnoughSumException("not enough data for the loan monthly amount evaluation");
 		}
 		
 		return aBListClone;
