@@ -12,7 +12,7 @@ mvn install
 
 Example of Execution (Windows 10 64Bits Version):
 
-java -jar .\RateCalculationSystem-0.0.1-SNAPSHOT.jar es.zopa.Main .\input.csv 1000
+java -jar .\RateCalculationSystem-0.0.1-SNAPSHOT.jar .\input.csv 1000
 
 
 
